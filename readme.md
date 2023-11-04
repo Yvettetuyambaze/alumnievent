@@ -10,7 +10,7 @@ About Us Page: Non-logged-in users can view the About Us page, which provides de
 # Clone the repository:
 
 
-git clone https://github.com/your-username/alumni-events-platform.git
+git repo clone Yvettetuyambaze/alumnievent
 Install the dependencies:
 
 
