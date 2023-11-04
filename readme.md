@@ -9,8 +9,9 @@ About Us Page: Non-logged-in users can view the About Us page, which provides de
 # Installation
 # Clone the repository:
 
-
+link to repository: https://github.com/Yvettetuyambaze/alumnievent
 git repo clone Yvettetuyambaze/alumnievent
+
 Install the dependencies:
 
 
