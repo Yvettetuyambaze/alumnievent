@@ -1,0 +1,28 @@
+<div class="row"> <!-- Row container for the event details -->
+    <div class="col s12 m8">
+        <h3>{{event.title}} <!-- Display event title -->
+            <small>{{{editIcon event.user user event._id false}}}</small> <!-- Display edit icon for the event owner -->
+        </h3>
+        <div class="card event"> <!-- Card for displaying event details -->
+            <div class="card-content">
+                <span class="card-title">{{formatDate event.createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span> <!-- Display formatted creation date of the event -->
+                <p><strong>Category:</strong> {{event.category}}</p> <!-- Display event category -->
+                <p><strong>Date:</strong> {{formatDate event.date 'MMMM Do YYYY'}}</p> <!-- Display formatted event date -->
+                <p><strong>Location:</strong> {{event.location}}</p> <!-- Display event location -->
+                <p><strong>Host:</strong> {{event.host}}</p> <!-- Display event host -->
+                <p>{{{event.body}}}</p> <!-- Display event description -->
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m4">
+        <div class="card center-align"> <!-- Card for displaying event owner details -->
+            <div class="card-content">
+                <span class="card-title">{{event.user.displayName}}</span> <!-- Display event owner's display name -->
+                <img src="{{event.user.image}}" class="circle responsive-img img-small"> <!-- Display event owner's image -->
+            </div>
+            <div class="card-action">
+                <a href="/events/user/{{event.user._id}}">Read More From {{event.user.firstName}}</a> <!-- Link to more events from the same user -->
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<!-- Section for searching events -->
+<h1>Upcoming Events</h1> <!-- Heading indicating the content of the section -->
+<ul class="search-form">
+    <li>    
+        <!-- Form for searching events by title -->
+        <form id="search-site"  action='/events/search/:query' method='get'>
+            <div class="input-group">
+                    <i class="fas fa-search fa-large" ></i> <!-- Search icon -->
+                    <div class="input-field">
+                    <input id="search" type="search" name='query' placeholder="Search by title"> <!-- Input field for search query -->
+                    <label class="label-icon" for="search">
+                    </label>
+                 </div>
+                <button type="submit" class="input-group-addon btn blue">search</button> <!-- Submit button for search form -->
+            </div>
+
+        </form>  
+    </li>   
+</ul>
+
+<!-- Container for displaying upcoming events -->
+<div class="row">
+    {{#each events}} <!-- Loop through each event -->
+    <div class="col s12 m4">
+        <div class="card">
+            <div class="card-image">
+                {{{editIcon user ../user _id}}} <!-- Display edit icon if the user is the event creator -->
+            </div>
+            <div class="card-content center-align">
+                <h5>{{title}}</h5> <!-- Title of the event -->
+                <p>{{stripTags (truncate body 150)}}</p> <!-- Display truncated body of the event -->
+                <br>
+                <div class="chip">
+                    <img src="{{user.image}}" alt=""> <!-- Display user image -->
+                    <a href="/events/user/{{user._id}}">{{user.displayName}}</a> <!-- Link to user's profile -->
+                </div>
+            </div>
+            <div class="card-action center-align">
+                <a href="/events/{{_id}}" class="btn grey">Read More</a> <!-- Button to view more details about the event -->
+            </div>
+        </div>
+    </div>
+    {{else}}
+    <p>No Events to display</p> <!-- Display a message if there are no events to show -->
+    {{/each}}
+</div>

@@ -1,0 +1,79 @@
+<!-- This form allows users to add an event -->
+<h3>Add Event</h3> <!-- Heading indicating the purpose of the form -->
+<div class="row">
+    <form action="/events" method="POST" class="col s12">
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="title" name="title">
+                <label for="title">Title</label> <!-- Input field for the event title -->
+            </div>
+        </div>
+        <!-- Dropdown to select the event status -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="status" name="status">
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+        <!-- Dropdown to select the event category -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="category" name="category">
+                    <option value="professional development" selected>Professional Development</option>
+                    <option value="networking">Networking</option>
+                    <option value="campus events">Campus Events</option>
+                </select>
+                <label for="category">Category</label>
+            </div>
+        </div>
+        <!-- Input field to specify the date of the event -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="date" id="date" name="date">
+                <label for="date">Date</label>
+            </div>
+        </div>
+        <!-- Input field to specify the event location -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="location" name="location">
+                <label for="location">Location</label>
+            </div>
+        </div>
+        <!-- Input field to specify the event host -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="host" name="host">
+                <label for="host">Host</label>
+            </div>
+        </div>
+        <!-- Text area to provide a description of the event -->
+        <div class="row">
+            <div class="input-field col s12">
+                <h5>Tell us more about your event:</h5>
+                <textarea id="body" name="body" class="materialize-textarea"></textarea>
+            </div>
+        </div>
+        <!-- Buttons for form submission and cancellation -->
+        <div class="row">
+            <div class="col s6">
+                <input type="submit" value="Save" class="btn blue">
+            </div>
+            <div class="col s6">
+                <a href="/dashboard" class="btn red">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    // Initialize Materialize dropdown select
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>

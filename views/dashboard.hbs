@@ -1,0 +1,91 @@
+<style>
+  /* Style for circular delete and edit buttons */
+  .btn-delete,
+  .btn-edit {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<!-- Subheading for the dashboard section -->
+<h6>Dashboard</h6>
+<!-- Greeting message displaying the user's name -->
+<h3>Welcome {{name}}</h3>
+<!-- Informational message for the user -->
+<p>Here are your Events</p>
+
+<!-- Add a dropdown section for event filtering -->
+<select id="event-category">
+  <option value="all">All Events</option>
+  <option value="professional-development">Professional Development</option>
+  <option value="networking">Networking</option>
+  <option value="campus-events">Campus Events</option>
+</select>
+
+{{#if events}}
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Event Name</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Category</th>
+            <th>Location</th>
+            <th>Host</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each events}}
+        <tr>
+            <!-- Link to individual event pages -->
+            <td><a href="/events/{{_id}}">{{title}}</a></td>
+            <!-- Display formatted date of the event -->
+            <td>{{formatDate date 'MMMM Do YYYY, h:mm:ss a'}}</td>
+            <!-- Display the status of the event -->
+            <td>{{status}}</td>
+            <!-- Display the category of the event -->
+            <td>{{category}}</td>
+            <!-- Display the location of the event -->
+            <td>{{location}}</td>
+            <!-- Display the host of the event -->
+            <td>{{host}}</td>
+            <td>
+                <!-- Edit button for the event -->
+                <a href="/events/edit/{{_id}}" class="btn blue btn-edit">
+                    <i class="fas fa-edit"></i>
+                </a>
+
+                <!-- Form for deleting the event -->
+                <form action="/events/{{_id}}" method="POST" id="delete-form">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <!-- Delete button for the event -->
+                    <button type="submit" class="btn red btn-delete">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </form>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+{{else}}
+<!-- Message for when the user has not created any events -->
+<p>You have not created any event</p>
+{{/if}}
+
+<!-- Script for Materialize library -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    // Event listener for document load
+    document.addEventListener('DOMContentLoaded', function() {
+        // Select all dropdown elements
+        var elems = document.querySelectorAll('select');
+        // Initialize the Materialize select form
+        var instances = M.FormSelect.init(elems);
+    });
+</script>

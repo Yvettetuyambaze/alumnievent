@@ -1,0 +1,85 @@
+<!-- Form for editing an existing event -->
+<h3>Edit Event</h3> <!-- Heading indicating the purpose of the form -->
+<div class="row">
+    <form action="/events/{{event._id}}" method="POST" class="col s12">
+        <input type="hidden" name="_method" value="PUT"> <!-- Hidden field to specify the PUT method -->
+        <!-- Input field to edit the event title -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="title" name="title" value="{{event.title}}">
+                <label for="title">Title</label>
+            </div>
+        </div>
+        <!-- Dropdown to edit the event status -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="status" name="status">
+                    {{#select event.status}}
+                    <option value="public" selected>Public</option>
+                    <option value="private">Private</option>
+                    {{/select}}
+                </select>
+                <label for="status">Status</label>
+            </div>
+        </div>
+        <!-- Dropdown to edit the event category -->
+        <div class="row">
+            <div class="input-field col s12">
+                <select id="category" name="category">
+                    {{#select event.category}}
+                    <option value="professional development" selected>Professional Development</option>
+                    <option value="networking">Networking</option>
+                    <option value="campus events">Campus Events</option>
+                    {{/select}}
+                </select>
+                <label for="category">Category</label>
+            </div>
+        </div>
+        <!-- Input field to edit the event date -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="date" id="date" name="date" value="{{event.date}}">
+                <label for="date">Date</label>
+            </div>
+        </div>
+        <!-- Input field to edit the event location -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="location" name="location" value="{{event.location}}">
+                <label for="location">Location</label>
+            </div>
+        </div>
+        <!-- Input field to edit the event host -->
+        <div class="row">
+            <div class="input-field col s12">
+                <input type="text" id="host" name="host" value="{{event.host}}">
+                <label for="host">Host</label>
+            </div>
+        </div>
+        <!-- Text area to edit the event description -->
+        <div class="row">
+            <div class="input-field col s12">
+                <h5>Tell Us Your event:</h5>
+                <textarea id="body" name="body" class="materialize-textarea">{{event.body}}</textarea>
+            </div>
+        </div>
+        <!-- Buttons for form submission and cancellation -->
+        <div class="row">
+            <div class="col s6">
+                <input type="submit" value="Save" class="btn blue">
+            </div>
+            <div class="col s6">
+                <a href="/dashboard" class="btn red">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    // Initialize Materialize dropdown select
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+</script>

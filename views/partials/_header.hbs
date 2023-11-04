@@ -1,0 +1,42 @@
+<nav class="blue darken-4"> <!-- Navigation bar with dark blue background -->
+    <div class="nav-wrapper container" style="width: 95%;"> <!-- Wrapper for the navigation content -->
+        <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a> <!-- Mobile navigation trigger -->
+        <i class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff;"></i> <!-- Logo icon with styling -->
+        <a href="/" class="brand-logo left hide-on-med-and-down">Alumni Events</a> <!-- Brand logo for desktop view -->
+        <a href="/" class="brand-logo right hide-on-large-only">Alumni Events</a> <!-- Brand logo for mobile view -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down" > <!-- List of navigation links for desktop view -->
+            {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
+              <!-- Display links when the user is logged in -->
+              <li><a href="/dashboard">Dashboard</a></li> 
+              <li><a href="/about">About Us</a></li> 
+              <li><a href="/events">My Public Events</a></li> 
+              <li><a href="/contact">Contact Us</a></li> 
+              <li><a href="/events/add" class="btn blue">Create Event</a></li> 
+              <li><a href="/" class="btn red">Logout</a></li> 
+            {{else}}
+              <!-- Display links when the user is not logged in -->
+              <li><a href="/">Home</a></li> 
+              <li><a href="/about">About Us</a></li> 
+              <li><a href="/events">Upcoming Events</a></li> 
+              <li><a href="/contact">Contact Us</a></li> 
+              <li><a class="btn blue" href="/login" >Login/Signup</a></li> 
+            {{/if}}
+        </ul>
+        <ul class="sidenav" id="mobile-demo"> <!-- List of navigation links for mobile view -->
+            {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
+              <li><a href="/dashboard">Dashboard</a></li> 
+              <li><a href="/about">About Us</a></li> 
+              <li><a href="/events">My public Events</a></li> 
+              <li><a href="/events/add">Create Event</a></li> 
+              <li><a href="/contact">Contact Us</a></li> 
+              <li><a href="/">Logout</a></li> 
+            {{else}}
+              <li><a href="/">Home</a></li> 
+              <li><a href="/about">About Us</a></li> 
+              <li><a href="/events">Upcoming Events</a></li> 
+              <li><a class="btn blue" href="/login!" >Login/Signup</a></li> 
+              <li><a href="/contact">Contact Us</a></li> 
+            {{/if}}
+        </ul>
+    </div>
+</nav>
