@@ -1,6 +1,7 @@
 //ABOUT THE CODES
 //This code snippet establishes a connection to the MongoDB database using the Mongoose library. 
-//It includes error handling to gracefully handle connection failures and outputs appropriate logs for debugging purposes.
+//It includes error handling to gracefully handle connection failures and outputs appropriate logs 
+//for debugging purposes.
 
 // Importing the mongoose module
 
