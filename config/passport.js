@@ -7,7 +7,12 @@
 // Importing the required modules and models
 const GoogleStrategy = require('passport-google-oauth20').Strategy
 const mongoose = require('mongoose')
-const User = require('../models/User')
+const Usergoogle = require('../models/Usergoogle')
+const LocalStrategy = require("passport-local").Strategy;
+const bcrypt = require("bcryptjs");
+
+// Load User model
+const Useremail = require("../models/Useremail");
 
 // Exporting a function that takes the passport object as an argument
 module.exports = function (passport) {
@@ -31,14 +36,14 @@ module.exports = function (passport) {
 
         try {
           // Checking if the user already exists in the database
-          let user = await User.findOne({ googleId: profile.id })
+          let user = await Usergoogle.findOne({ googleId: profile.id })
 
           if (user) {
             // If the user exists, pass the user object to the 'done' callback function
             done(null, user)
           } else {
             // If the user doesn't exist, create a new user and pass the user object to the 'done' callback function
-            user = await User.create(newUser)
+            user = await Usergoogle.create(newUser)
             done(null, user)
           }
         } catch (err) {
@@ -49,13 +54,45 @@ module.exports = function (passport) {
     )
   )
 
+  passport.use(
+    new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
+      // Match user
+      Useremail.findOne({
+        email: email,
+      }).then((user) => {
+        if (!user) {
+          return done(null, false, { message: "That email is not registered" });
+        }
+  
+        // Match password
+        bcrypt.compare(password, user.password, (err, isMatch) => {
+          if (err) throw err;
+          if (isMatch) {
+            return done(null, user);
+          } else {
+            return done(null, false, { message: "Password incorrect" });
+          }
+        });
+      });
+    })
+  );
+  
+
   // Serializing the user ID to the session
   passport.serializeUser((user, done) => {
     done(null, user.id)
   })
 
   // Deserializing the user ID from the session to retrieve the user object
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => done(err, user))
-  })
+passport.deserializeUser((id, done) => {
+  Useremail.findById(id, (err, user) => {
+    if (user) {
+      done(err, user);
+    } else {
+      // If the user is not found in the Useremail model, try finding in the Usergoogle model
+      Usergoogle.findById(id, (err, user) => done(err, user));
+    }
+  });
+});
+
 }

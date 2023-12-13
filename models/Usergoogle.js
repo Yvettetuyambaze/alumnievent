@@ -34,4 +34,4 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Create a model named "User" based on the UserSchema
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Usergoogle', UserSchema);

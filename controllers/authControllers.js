@@ -25,7 +25,8 @@ const logout = (req, res, next) => {
     if (error) {
       return next(error);
     }
-    res.redirect('/');
+    req.flash("success_msg", "You are logged out");
+  res.redirect("/users/loginwithemail");
   });
 };
 

@@ -10,6 +10,7 @@ const passport = require('passport'); // Module for user authentication
 const session = require('express-session'); // Module for managing user sessions
 const MongoStore = require('connect-mongo'); // Module for storing session data in MongoDB
 const connectDB = require('./config/db'); // Module for connecting to MongoDB
+const flash = require('connect-flash');
 
 // Load config
 dotenv.config({ path: './config/config.env' }); // Load environment variables
@@ -52,35 +53,32 @@ const {
   select,
 } = require('./helpers/hbs');
 
-// Handlebars
-// Configure the express handlebars engine
-app.engine(
-  '.hbs',
-  exphbs({
-    helpers: {
-      formatDate,
-      stripTags,
-      truncate,
-      editIcon,
-      select,
-    },
-    defaultLayout: 'mainLayouts', // Specify the default layout
-    extname: '.hbs', // Set the file extension for templates
-  })
-);
+// Handlebars configuration
+app.engine('.hbs', exphbs({
+  helpers: {
+    formatDate,
+    stripTags,
+    truncate,
+    editIcon,
+    select,
+  },
+  defaultLayout: 'mainLayouts',
+  extname: '.hbs',
+  partialsDir: [path.join(__dirname, 'views/partials')],
+}));
 app.set('view engine', '.hbs'); // Set the view engine for rendering templates
 
 // Sessions
 const mongoStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI, // Specify the MongoDB connection URI
-  // Additional options here
+ 
 });
 
 app.use(
   session({
     secret: 'keyboard cat', // Secret used to sign the session ID cookie
-    resave: false, // Do not save the session for every request
-    saveUninitialized: false, // Do not create a session until a user is logged in
+    resave: true, //  save the session for every request
+    saveUninitialized: true, //  create a session until a user is logged in
     store: mongoStore, // Use MongoDB to store sessions
   })
 );
@@ -90,10 +88,16 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Connect flash
+app.use(flash());
+
 // Set global var
 // Set a global variable for the user in the response locals
 app.use(function (req, res, next) {
   res.locals.user = req.user || null;
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
   next();
 });
 
@@ -106,6 +110,7 @@ app.use('/', require('./routes/indexRoutes')); // Main application routes
 app.use('/auth', require('./routes/authRoutes')); // Authentication routes
 app.use('/events', require('./routes/eventRoutes')); // Event-related routes
 app.use('/contact', require('./routes/contactRoutes')); // Added the contactRoutes file
+app.use('/users', require('./routes/users.js'));
 
 const PORT = process.env.PORT || 3000; // Define the port number
 
