@@ -17,7 +17,10 @@ const showAddPage = (req, res) => {
 // Process the form for adding a new event
 const processAddForm = async (req, res) => {
   try {
+    // Assuming your image is stored in req.file
     req.body.user = req.user.id;
+    req.body.image = req.file ? req.file.filename : ''; // Save the image filename or URL
+
     await Event.create(req.body);
     res.redirect("/dashboard");
   } catch (err) {
@@ -109,6 +112,12 @@ const updateEvent = async (req, res) => {
         runValidators: true,
       });
 
+      // Update the image if a new one is provided
+      if (req.file) {
+        event.image = req.file.filename;
+        await event.save();
+      }
+
       res.redirect("/dashboard");
     }
   } catch (err) {
@@ -116,7 +125,6 @@ const updateEvent = async (req, res) => {
     return res.render("error/500");
   }
 };
-
 // Delete an event
 const deleteEvent = async (req, res) => {
   try {

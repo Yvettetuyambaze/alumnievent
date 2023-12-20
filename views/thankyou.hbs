@@ -1,5 +1,36 @@
-<div class="container" style="text-align: center;"> <!-- Container with centered text alignment -->
-    <h2>Thank You</h2> <!-- Heading for the thank you message -->
-    <p>We have received your message</p> <!-- Confirmation message for receiving the user's message -->
-    <p>We will get back to you soon.</p> <!-- Assuring the user of a prompt response -->
+<style>
+  /* Styling for the thank you container */
+  .thank-you-container {
+    text-align: center;
+    margin: 50px auto; /* Centering the container */
+    max-width: 600px; /* Setting a maximum width for the container */
+  }
+
+  /* Styling for the thank you message */
+  .thank-you-heading {
+    font-size: 2.5rem; /* Larger font size for the heading */
+    color: #2196F3; /* Blue color for the heading */
+    margin-bottom: 20px; /* Spacing at the bottom of the heading */
+  }
+
+  .thank-you-message {
+    font-size: 1.2rem; /* Font size for the thank you message */
+    margin-bottom: 30px; /* Spacing at the bottom of the message */
+  }
+
+  /* Styling for the personalized message */
+  .personalized-message {
+    font-size: 1.3rem; /* Font size for the personalized message */
+    font-weight: bold; /* Making the text bold */
+    color: #333; /* Dark color for the text */
+  }
+</style>
+
+<!-- Thank you container with creative design -->
+<div class="container thank-you-container" >
+  <h2 class="thank-you-heading">Thank You!</h2>
+  <p class="thank-you-message">We have received your message and will get back to you soon.</p>
+  <p class="personalized-message">Your inquiry is important to us!</p>
+  <!-- Replace [Name] with the dynamic name received from the form submission -->
+  <!-- You may need to use server-side programming to replace [Name] with the actual name -->
 </div>

@@ -10,13 +10,13 @@ const eventController = require('../controllers/eventControllers');
 // These routes are associated with specific HTTP request methods and corresponding controller functions
 router.get("/add", ensureAuth, eventController.showAddPage);
 router.post("/", ensureAuth, eventController.processAddForm);
-router.get("/", ensureAuth, eventController.showAllEvents);
-router.get("/:id", ensureAuth, eventController.showSingleEvent);
+router.get("/",  eventController.showAllEvents);
+router.get("/:id", eventController.showSingleEvent);
 router.get("/edit/:id", ensureAuth, eventController.showEditPage);
 router.put("/:id", ensureAuth, eventController.updateEvent);
 router.delete("/:id", ensureAuth, eventController.deleteEvent);
-router.get("/user/:userId", ensureAuth, eventController.showUserEvents);
-router.get("/search/:query", ensureAuth, eventController.searchEventsByTitle);
+router.get("/user/:userId",  eventController.showUserEvents);
+router.get("/search/:query", eventController.searchEventsByTitle);
 
 // Export the router to make it available for use in other files
 module.exports = router;

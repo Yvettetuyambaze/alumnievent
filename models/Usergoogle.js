@@ -3,7 +3,7 @@
 //  It specifies various required fields, including "googleId," "displayName," "firstName," and "lastName." 
 //  It also includes an optional "image" field for the user's profile picture. Additionally, it sets a default 
 //  value for the creation date.
-
+const {roles} = require('../utils/constants')
 const mongoose = require('mongoose');
 
 // Define the structure of the User schema for the MongoDB collection

@@ -1,3 +1,4 @@
+//usersRoutes.js
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
@@ -22,7 +23,10 @@ router.get("/register", forwardAuthenticated, (req, res) =>
 
 // Register
 router.post("/register", (req, res) => {
-  const { name, email, password, password2 } = req.body;
+  const { name, email, password, password2, role } = req.body;
+     // Validate password complexity
+     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/;
+
   let errors = [];
 
   if (!name || !email || !password || !password2) {
@@ -32,10 +36,12 @@ router.post("/register", (req, res) => {
   if (password != password2) {
     errors.push({ msg: "Passwords do not match" });
   }
-
-  if (password.length < 6) {
-    errors.push({ msg: "Password must be at least 6 characters" });
-  }
+// Validate password complexity e.g: AbcdefMm1234 / folow the regex
+   if (!passwordRegex.test(password)) {
+    errors.push({
+       msg: "Password must be at least 6 characters long and include at least one number, and both upper and lowercase letters."
+     });
+   }
 
   if (errors.length > 0) {
     res.render("register", {
@@ -44,6 +50,7 @@ router.post("/register", (req, res) => {
       email,
       password,
       password2,
+      role,
     });
   } else {
     Useremail.findOne({ email: email }).then((user) => {
@@ -55,12 +62,14 @@ router.post("/register", (req, res) => {
           email,
           password,
           password2,
+          role,
         });
       } else {
         const newUser = new Useremail({
           name,
           email,
           password,
+          role,
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -99,5 +108,11 @@ router.get("/logout", (req, res) => {
   req.flash("success_msg", "You are logged out");
   res.redirect("/users/loginwithemail");
 });
+
+//profile
+router.get('/profile', async(req, res, next) => {
+  const person = req.user;
+  res.render('profile', { person })
+})
 
 module.exports = router;

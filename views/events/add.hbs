@@ -1,7 +1,7 @@
 <!-- This form allows users to add an event -->
 <h3>Add Event</h3> <!-- Heading indicating the purpose of the form -->
 <div class="row">
-    <form action="/events" method="POST" class="col s12">
+    <form action="/events" method="POST" class="col s12" enctype="multipart">
         <div class="row">
             <div class="input-field col s12">
                 <input type="text" id="title" name="title">
@@ -57,13 +57,24 @@
                 <textarea id="body" name="body" class="materialize-textarea"></textarea>
             </div>
         </div>
+        <!-- Input field to upload an image for the event -->
+        <div class="file-field input-field">
+            <div class="btn">
+                <span>Upload Image</span>
+                <input type="file" name="image">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+            </div>
+        </div>
+
         <!-- Buttons for form submission and cancellation -->
         <div class="row">
             <div class="col s6">
                 <input type="submit" value="Save" class="btn blue">
             </div>
             <div class="col s6">
-                <a href="/dashboard" class="btn red">Cancel</a>
+                <a href="/dashboard" class="btn blue">Cancel</a>
             </div>
         </div>
     </form>

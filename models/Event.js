@@ -38,10 +38,19 @@ const EventSchema = new mongoose.Schema({
     type: String,
     default: 'public', // Default status is public
     enum: ['public', 'private'], // Status should be one of the provided options
+    required: true, 
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'User', // Reference to the User model
+    required: true,
+    refPath: 'userType', // Dynamically set the model reference based on the userType field
+  },
+  userType: {
+    type: String,
+    enum: ['Usergoogle', 'Useremail'], // Enumerate the possible user types
+  },
+  image: {
+    type: String, // Assuming you store the image URL or file path
   },
   createdAt: {
     type: Date,

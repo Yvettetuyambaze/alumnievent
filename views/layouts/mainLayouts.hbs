@@ -1,5 +1,4 @@
 <!DOCTYPE html> <!-- Document type declaration -->
-<html lang="en"> <!-- Language attribute for the document -->
 
 <head>
     <meta charset="UTF-8"> <!-- Character encoding for the document -->
@@ -7,6 +6,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> <!-- Materialize CSS library link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0-2/css/all.min.css" integrity="sha256-46r060N2LrChLLb5zowXQ72/iKKNiw/lAmygmHExk/o=" crossorigin="anonymous" /> <!-- Font Awesome CSS library link -->
     <link rel="stylesheet" href="/css/style.css"> <!-- Custom CSS file link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="...">
+
         <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
@@ -17,16 +18,54 @@
       rel="stylesheet"
       href="https://bootswatch.com/4/journal/bootstrap.min.css"
     />
+     <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Inter:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+  
+    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+   <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Animatuin -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Template Stylesheet -->
+    <link href="/css/style.css" rel="stylesheet">
     <title>Alumni Events</title> <!-- Title of the webpage -->
+
+   
+
 </head>
 
 <body>
+  
     {{> _header}} <!-- Including partial template for header -->
-    {{> _add_btn}} <!-- Including partial template for add button -->
-    <div class="container"> <!-- Container for the main content -->
+    <!-- Partial template for add button -->
+{{#if user}} <!-- Check if the user is logged in -->
+  <div class="fixed-action-btn">
+      <a href="/events/add" class="btn-floating btn-large blue">
+          <i class="fas fa-plus"></i> <!-- Plus icon for add button -->
+      </a>
+  </div>
+{{/if}}
+    <div class="container" > <!-- Container for the main content -->
         {{{body}}} <!-- Dynamic content injection -->
     </div>
     {{> _footer}} <!-- Including partial template for footer -->
+
+     <!-- Template Javascript -->
+    <script src="/js/main.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> <!-- Materialize JavaScript library link -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.14.1/ckeditor.js" integrity="sha256-bEIQpI72w9NJuIVhTLFUF2/8uxl0u5800r8ddViuv+o=" crossorigin="anonymous"></script> <!-- CKEditor JavaScript library link -->
@@ -54,6 +93,12 @@
       integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
       crossorigin="anonymous"
     ></script>
+
+
+<!-- Template Javascript -->
+<script src="/js/main.js"></script>
+
+
 </body>
 
 </html>

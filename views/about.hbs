@@ -1,69 +1,144 @@
 <style>
-  /* Styling for the card container */
   .card-container {
-    display: flex; /* Setting the display as flex for the card container */
-    flex-wrap: wrap; /* Enabling wrapping for the flex items within the container */
-    gap: 20px; /* Setting the gap between each card */
-  }
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centering the cards horizontally */
+}
 
-  /* Styling for individual cards */
-  .card {
-    background-color: #f3f3f3; /* Setting the background color for the cards */
-    padding: 20px; /* Adding padding to the cards */
-    margin-bottom: 20px; /* Setting margin at the bottom of the cards */
-    border-radius: 5px; /* Applying border radius to the cards */
-    width: 400px; /* Setting the width of the cards */
-  }
+/* Styling for the card container */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* Centering the cards horizontally */
+}
 
-  /* Styling for images inside the cards */
-  .card img {
-    width: 100%; /* Setting the width of the images to 100% */
-    border-radius: 5px; /* Applying border radius to the images */
-    margin-top: 10px; /* Setting margin at the top of the images */
-  }
+/* Styling for individual cards */
+.card {
+  background-color: #fff; /* White background for the cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adding a subtle box shadow */
+  border-radius: 10px;
+  overflow: hidden; /* Hiding any content that overflows the card */
+  width: 250px; /* Adjusted width for the cards */
+}
+
+/* Styling for card content */
+.card-content {
+  padding: 20px;
+}
+
+/* Styling for icons */
+.card-icon {
+  font-size: 3rem; /* Adjusting the icon size */
+  margin-bottom: 10px;
+}
 </style>
 
+ <!-- Header End -->
+        <div class="container-xxl py-5 bg-dark page-header mb-5" style="background-image: url(/images/Alumni-Homepage-Image.jpg);">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 ">About Us</h1>
+                
+            </div>
+        </div>
+        <!-- Header End -->
+ <!-- About Start -->
+        <div class="container-xxl py-5">
+            <div class="container">
+                <div class="row g-5 align-items-center">
+                    <div class="col-lg-6 wow fadeIn">
+    <div class="row g-0 about-bg rounded overflow-hidden">
+        <div class="col-6 text-start">
+            <img class="img-fluid equal-size" src="/images/together.png">
+        </div>
+        <div class="col-6 text-start">
+            <img class="img-fluid equal-size" src="/images/about-3.jpg">
+        </div>
+        
+        <div class="col-6 text-end">
+            <img class="img-fluid equal-size" src="/images/about-2.jpg">
+        </div>
+        <div class="col-6 text-end">
+            <img class="img-fluid equal-size" style="margin-top:50px" src="/images/A banner image.jpg">
+        </div>
+    </div>
+</div>
+
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
+    <h1 class="mb-4">Connect with Alumni Events for Exciting Opportunities</h1>
+    <p class="mb-4">Discover a world of opportunities and stay engaged with our vibrant community of alumni. Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet.</p>
+    <p><i class="fa fa-check text-primary me-3"></i>Explore diverse alumni events and networking opportunities.</p>
+    <p><i class="fa fa-check text-primary me-3"></i>Stay informed about professional development workshops and seminars.</p>
+    <p><i class="fa fa-check text-primary me-3"></i>Connect with successful alumni and industry leaders.</p>
+    <a class="btn btn-primary py-2 px-5 mt-3" href="/events">Explore Events</a>
+</div>
+
+                </div>
+            </div>
+        </div>
+        <!-- About End -->
 
 <!-- Card container containing multiple cards -->
-<div class="card-container">
-  <!-- Card 1 - About Us -->
-  <div class="card">
-    <h1>About Us</h1>
-    <p>Our platform aims to create a space where university alumni can network, collaborate, and organize various events.</p>
-    <img src="/images/logo.jpg" alt="About Us Image">
-  </div>
+<div class="container mt-5">
+  <div class="card-container">
+    <!-- Card 1 - About Us -->
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-info-circle card-icon text-primary"></i>
+        <h1>About Us</h1>
+        <p>Our platform aims to create a space where university alumni can network, collaborate, and organize various events.</p>
+      </div>
+    </div>
 
-  <!-- Card 2 - Our Vision -->
-  <div class="card">
-    <h2>Our Vision</h2>
-    <p>We envision a community where alumni can stay connected, share experiences, and support each other in their personal and professional endeavors.</p>
-    <img src="/images/vision_image.jpg" alt="Our Vision Image">
-  </div>
+    <!-- Card 2 - Our Vision -->
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-eye card-icon text-success"></i>
+        <h2>Our Vision</h2>
+        <p>We envision a community where alumni can stay connected, share experiences, and support each other in their personal and professional endeavors.</p>
+      </div>
+    </div>
 
-  <!-- Card 3 - Our Mission -->
-  <div class="card">
-    <h2>Our Mission</h2>
-    <p>Our mission is to facilitate meaningful interactions among alumni, fostering a sense of belonging and enabling them to leverage their collective knowledge and resources for mutual growth and development.</p>
-    <img src="/images/mission_image.jpg" alt="Our Mission Image">
-  </div>
+    <!-- Card 3 - Our Mission -->
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-bullseye card-icon text-warning"></i>
+        <h2>Our Mission</h2>
+        <p>Our mission is to facilitate meaningful interactions among alumni, fostering a sense of belonging and enabling them to leverage their collective knowledge and resources for mutual growth and development.</p>
+      </div>
+    </div>
 
-  <!-- Card 4 - Values -->
-  <div class="card">
-    <h2>Values</h2>
-    <ul>
-      <li><strong>Collaboration:</strong> We believe in the power of teamwork and collaboration to achieve common goals.</li>
-      <li><strong>Inclusivity:</strong> We embrace diversity and inclusivity, respecting the unique perspectives and experiences of all our members.</li>
-      <li><strong>Integrity:</strong> We uphold the highest standards of integrity and ethical conduct in all our interactions and initiatives.</li>
-      <li><strong>Innovation:</strong> We encourage innovation and creativity, continuously striving to improve and enhance our platform for the benefit of our community.</li>
-      <li><strong>Community:</strong> We prioritize the well-being and success of our community, fostering a supportive and engaging environment for all members.</li>
-    </ul>
-    <img src="/images/values_image.jpg" alt="Our Values Image">
-  </div>
+    <!-- Card 4 - Values (Wider) -->
+    <div class="card" style="width: 450px;">
+      <div class="card-content">
+        <i class="fas fa-heart card-icon text-danger"></i>
+        <h2>Values</h2>
+        <ul>
+          <li><strong>Collaboration:</strong> We believe in the power of teamwork and collaboration to achieve common goals.</li>
+          <li><strong>Inclusivity:</strong> We embrace diversity and inclusivity, respecting the unique perspectives and experiences of all our members.</li>
+          <li><strong>Integrity:</strong> We uphold the highest standards of integrity and ethical conduct in all our interactions and initiatives.</li>
+          <li><strong>Innovation:</strong> We encourage innovation and creativity, continuously striving to improve and enhance our platform for the benefit of our community.</li>
+          <li><strong>Community:</strong> We prioritize the well-being and success of our community, fostering a supportive and engaging environment for all members.</li>
+        </ul>
+      </div>
+    </div>
 
-  <!-- Card 5 - Get Involved -->
-  <div class="card">
-    <h2>Get Involved</h2>
-    <p>If you are a university alum, join our platform today to reconnect with former classmates, explore new opportunities, and contribute to the growth and development of our vibrant alumni community.</p>
-    <img src="/images/get_involved_image.jpg" alt="Get Involved Image">
+    <!-- Card 5 - Get Involved (Wider) -->
+    <div class="card" style="width: 450px;">
+      <div class="card-content">
+        <i class="fas fa-hands-helping card-icon text-info"></i>
+        <h2>Get Involved</h2>
+        <p>If you are a university alumni, here's how you can get involved:</p>
+        <ol>
+          <li>Join our online platform and create your alumni profile.</li>
+          <li>Explore events, job opportunities, and connect with fellow alumni.</li>
+          <li>Share your experiences and insights on our discussion forums.</li>
+          <li>Mentor current students and recent graduates.</li>
+          <li>Contribute to the community by organizing or participating in events.</li>
+        </ol>
+        <p>Together, let's make a lasting impact!</p>
+      </div>
+    </div>
   </div>
 </div>

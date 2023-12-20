@@ -33,5 +33,12 @@ module.exports = {
       return next();
     }
     res.redirect('/dashboard');      
+  },
+  ensureAdmin: function(req, res, next) {
+    if (req.user.role === 'ADMIN') {
+      next();
+    } else {
+      res.redirect("/profile");
+    }
   }
 };

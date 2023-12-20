@@ -18,10 +18,10 @@
         <div class="card center-align"> <!-- Card for displaying event owner details -->
             <div class="card-content">
                 <span class="card-title">{{event.user.displayName}}</span> <!-- Display event owner's display name -->
-                <img src="{{event.user.image}}" class="circle responsive-img img-small"> <!-- Display event owner's image -->
+                {{displayImage event.user.image event.user.displayName}} <!-- Display event owner's image -->
             </div>
             <div class="card-action">
-                <a href="/events/user/{{event.user._id}}">Read More From {{event.user.firstName}}</a> <!-- Link to more events from the same user -->
+                <a href="/events/user/{{event.user._id}}">Read More {{event.user.firstName}}</a> <!-- Link to more events from the same user -->
             </div>
         </div>
     </div>

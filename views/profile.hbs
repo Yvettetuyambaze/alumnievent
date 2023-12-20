@@ -1,0 +1,77 @@
+
+    <!-- Add any additional styles or scripts here -->
+    <style>
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+    </style>
+
+    <div class="container mt-5">
+        <h1>User Profile</h1>
+        <div class="card mt-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <!-- Profile Picture -->
+                        <img src="{{user.profilePicture}}" alt="Profile Picture" class="img-fluid profile-picture">
+                        <input type="file" class="form-control mt-2" name="profilePicture" accept="image/*">
+                    </div>
+                 
+                    <a href="/admin/users" class="btn btn-secondary mt-3">View and Update Alumni Records Available (only for admin)</a>
+                 
+                    <div class="col-md-9">
+                        <!-- User Details -->
+                          {{#each user}}
+                        <h4>Name: {{name}}</h4>
+                        <p>Email: {{email}}</p>
+                        <p>Role: {{role}}</p>
+                        <form action="/admin/update-role" method="post" class="form-inline">
+                            <input type="hidden" name="id" value="{{user._id}}" />
+                            <div class="form-group mr-2">
+                                <label for="role">Update Role:</label>
+                                <select name="role" id="role" class="form-control">
+                                    <option value="admin" {{#if (eq role 'admin')}}selected{{/if}}>Admin</option>
+                                    <option value="user" {{#if (eq role 'user')}}selected{{/if}}>User</option>
+                                    <option value="client" {{#if (eq role 'client')}}selected{{/if}}>Guest</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update</button>
+                        </form>
+                          {{/each}}
+                    </div>
+                </div>
+
+                <!-- Additional Fields -->
+                <div class="mt-3">
+                    <label for="phone">Phone:</label>
+                    <input type="text" class="form-control" name="phone" value="{{user.phone}}">
+                </div>
+                <div class="mt-3">
+                    <label for="bio">Bio:</label>
+                    <textarea class="form-control" name="bio">{{user.bio}}</textarea>
+                </div>
+                
+                <!-- Link to Check Events Created -->
+                <a href="/user/dashboard" class="btn btn-primary mt-3">Check Events Created</a>
+            </div>
+        </div>
+
+        <a href="/users/logout" class="btn btn-danger mt-3">Logout</a>
+        <br>
+        
+    </div>
+
+    <!-- Bootstrap JS and any additional scripts -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.8/dist/umd/popper.min.js"
+        integrity="sha384-fzHySTLjvWSTKwfsi0SKKtemjKWeqb0RoXKp7uOGi9LQx5V2V0pjs/VlrHDsQfFh"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+Wy2IYOoNCVRSq7C/daZ9ZQD5Poy5et9d78"
+        crossorigin="anonymous"></script>
+    <!-- Add any additional scripts here -->

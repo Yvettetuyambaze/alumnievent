@@ -5,54 +5,54 @@
       <h1 class="text-center mb-3">
         <i class="fas fa-user-plus"></i> Register
       </h1>
-   {{#if errors}}
-  {{#each errors}}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {{msg}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  {{/each}}
-{{/if}}
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{msg}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {{/each}}
+      {{/if}}
 
-{{#if success_msg}}
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{success_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      {{#if success_msg}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{success_msg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
 
-{{#if error_msg}}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{error_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      {{#if error_msg}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{error_msg}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
 
-{{#if error}}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{error}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      {{#if error}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{error}}
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
 
       <form action="/users/register" method="POST">
         <div class="form-group">
           <label for="name">Name</label>
           <input
-            type="name"
+            type="text"
             id="name"
             name="name"
             class="form-control"
             placeholder="Enter Name"
-            value="{{#if name}}{{name}}{{/if}}"
+           
           />
         </div>
         <div class="form-group">
@@ -64,6 +64,7 @@
             class="form-control"
             placeholder="Enter Email"
             value="{{#if email}}{{email}}{{/if}}"
+          
           />
         </div>
         <div class="form-group">
@@ -74,7 +75,8 @@
             name="password"
             class="form-control"
             placeholder="Create Password"
-            value="{{#if password}}{{password}}{{/if}}"
+            
+        
           />
         </div>
         <div class="form-group">
@@ -85,14 +87,21 @@
             name="password2"
             class="form-control"
             placeholder="Confirm Password"
-            value="{{#if password2}}{{password2}}{{/if}}"
+            
           />
         </div>
-        <button type="submit" class="btn btn-primary btn-block">
+        <div class="form-group">
+          <label for="role">Role</label>
+          <select id="role" name="role" class="form-control">
+            <option value="user" selected>Student Alumni</option>
+            <option value="admin">Alumni Manager</option>
+          </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-blockbtn btn-primary py-md-2 px-md-5">
           Register
         </button>
       </form>
-      <p class="lead mt-4">Have An Account? <a href="/users/loginwithemail">Login</a></p>
+      <p class="lead mt-4 ">Have An Account? <a href="/users/loginwithemail">Login</a></p>
     </div>
   </div>
 </div>

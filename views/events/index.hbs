@@ -3,17 +3,15 @@
 <ul class="search-form">
     <li>    
         <!-- Form for searching events by title -->
-        <form id="search-site"  action='/events/search/:query' method='get'>
+        <form id="search-site" action='/events/search/:query' method='get'>
             <div class="input-group">
-                    <i class="fas fa-search fa-large" ></i> <!-- Search icon -->
-                    <div class="input-field">
+                <i class="fas fa-search fa-large"></i> <!-- Search icon -->
+                <div class="input-field">
                     <input id="search" type="search" name='query' placeholder="Search by title"> <!-- Input field for search query -->
-                    <label class="label-icon" for="search">
-                    </label>
-                 </div>
+                    <label class="label-icon" for="search"></label>
+                </div>
                 <button type="submit" class="input-group-addon btn blue">search</button> <!-- Submit button for search form -->
             </div>
-
         </form>  
     </li>   
 </ul>
@@ -24,14 +22,28 @@
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
-                {{{editIcon user ../user _id}}} <!-- Display edit icon if the user is the event creator -->
+                <img src="{{image}}" alt="{{title}}"> <!-- Display event image -->
+                {{#if user}} <!-- Check if user is logged in -->
+                    <a href="/events/edit/{{_id}}" class="btn blue btn-edit">
+                        <i class="fas fa-edit"></i>
+                    </a>
+
+                    <!-- Form for deleting the event -->
+                    <form action="/events/{{_id}}" method="POST" id="delete-form">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <!-- Delete button for the event -->
+                        <button type="submit" class="btn red btn-delete">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                {{/if}}
             </div>
             <div class="card-content center-align">
                 <h5>{{title}}</h5> <!-- Title of the event -->
                 <p>{{stripTags (truncate body 150)}}</p> <!-- Display truncated body of the event -->
                 <br>
                 <div class="chip">
-                    <img src="{{user.image}}" alt=""> <!-- Display user image -->
+                    <img src="{{user.image}}" alt="{{user.displayName}}"> <!-- Display user image -->
                     <a href="/events/user/{{user._id}}">{{user.displayName}}</a> <!-- Link to user's profile -->
                 </div>
             </div>

@@ -19,6 +19,10 @@ router.get("/about", (req, res) => {
   res.render("about", {
   });
 });
+router.get("/opportunity", (req, res) => {
+  res.render("opportunity", {
+  });
+});
 
 router.get("/contact", (req, res) => {
   res.render("contact", {

@@ -1,38 +1,65 @@
-<footer class="page-footer grey darken-3"> <!-- Footer container with dark background color -->
-        <div class="container"> <!-- Container for the footer content -->
-            <div class="row"> <!-- Row for organizing the footer content -->
-                <div class="col l6 s12"> <!-- First column for logo and description -->
+<!-- Footer Start -->
+    <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5  fadeIn" data-wow-delay="0.1s">
+        <div class="container py-5">
+            <div class="row g-5">
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Company</h5>
                      <i class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff; padding: 20px;"></i> <!-- Icon for the logo with styling -->
                     <h5 class="white-text">Alumni Events</h5> <!-- Title for the footer -->
                     <p class="grey-text text-lighten-4">Stay connected and never miss out on exciting alumni events.</p> <!-- Description for the footer -->
                 </div>
-                <div class="col l4 offset-l2 s12"> <!-- Second column for footer links -->
-                    <h5 class="white-text">Links</h5> <!-- Title for the links section -->
-                    <ul>
-                       
-            {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Quick Links</h5>
+                    {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
               <!-- Display these links only when the user is logged in -->
-              <li><a href="/dashboard">Dashboard</a></li> 
-              <li><a href="/events">Upcoming Events</a></li>
-              <li><a href="/contact">Contact Us</a></li> 
-              <li><a href="/users/logout" class="btn red">Logout</a></li> 
+              <a class="btn btn-link text-white-50" href="/dashboard">Dashboard</a>
+              <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
+             <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+              <a class="btn btn-link text-white-50" href="/users/logout" class="btn red">Logout</a>
             {{else}}
               <!-- Display these links only when the user is not logged in -->
-              <li><a href="/">Home</a></li> 
-              <li><a href="/about">About Us</a></li> 
-              <li><a href="/events">Upcoming Events</a></li> 
-              <li><a href="/contact">Contact Us</a></li> 
-              <li><a class="btn blue" href="/login" >Login/Signup</a></li> 
+             <a  class="btn btn-link text-white-50" href="/">Home</a>
+              <a class="btn btn-link text-white-50" href="/about">About Us</a>
+             <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
+              <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+             <a class="btn btn-link text-white-50" class="btn blue" href="/login" >Login/Signup</a> 
             {{/if}}
-             <div class="social-icons">
-        <!-- Replace the placeholder URLs with the actual links to your social media profiles -->
-        <a href="#"><i class="fab fa-facebook-f"></i></a>
-        <a href="#"><i class="fab fa-twitter"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-      </div>
-      
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Contact</h5>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Mauritius, ALC Campus</p>
+                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+23055667712</p>
+                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>alumnievent@gmail.com</p>
+                    <div class="d-flex pt-2">
+                        <a class="btn btn-outline-light btn-social" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+                        <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <h5 class="text-white mb-4">Join Us</h5>
+                    <p>Log in or Sign up before joining us</p>
+                    <div class="position-relative mx-auto" style="max-width: 400px;">
+                       
+                        <button type="button"
+                            class="btn btn-primary py-2  top-0 end-0 mt-2 me-2" href="/login">Login/Signup</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </footer>
+        <div class="container">
+            <div class="copyright">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+                        &copy; <a class="border-bottom" href="#">Alumni Events</a>, All Right Reserved.
+
+                   
+                        Designed By <a class="border-bottom" href="">Code By Yvette Tuyambaze</a>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End -->

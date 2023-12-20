@@ -22,6 +22,9 @@ connectDB(); // Connect to the MongoDB database
 
 const app = express(); // Create an express application
 
+// Serve static files from the "public" directory
+app.use(express.static('images'));
+
 // Body parser
 app.use(express.urlencoded({ extended: false })); // Parse URL-encoded bodies
 app.use(express.json()); // Parse JSON bodies
@@ -45,13 +48,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Handlebars Helpers
 // Import necessary helpers from the handlebars file
-const {
-  formatDate,
-  stripTags,
-  truncate,
-  editIcon,
-  select,
-} = require('./helpers/hbs');
+const { formatDate, stripTags, truncate, editIcon, select, displayImage } = require('./helpers/hbs');
 
 // Handlebars configuration
 app.engine('.hbs', exphbs({
@@ -61,7 +58,15 @@ app.engine('.hbs', exphbs({
     truncate,
     editIcon,
     select,
+    displayImage,
+    json: function (context) {
+      return JSON.stringify(context);
+    },
+    eq: function (a, b) {
+      return a === b;
+    },
   },
+  
   defaultLayout: 'mainLayouts',
   extname: '.hbs',
   partialsDir: [path.join(__dirname, 'views/partials')],
@@ -110,7 +115,10 @@ app.use('/', require('./routes/indexRoutes')); // Main application routes
 app.use('/auth', require('./routes/authRoutes')); // Authentication routes
 app.use('/events', require('./routes/eventRoutes')); // Event-related routes
 app.use('/contact', require('./routes/contactRoutes')); // Added the contactRoutes file
-app.use('/users', require('./routes/users.js'));
+app.use('/users', require('./routes/usersRoutes')); // Added the usersRoutes file
+app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes file
+
+
 
 const PORT = process.env.PORT || 3000; // Define the port number
 

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+</head>
+
+<body>
+    <h1>Manage Alumni Records</h1>
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Update Role</th>
+        </thead>
+
+        <tbody>
+            {{#each users}}
+            <tr id="/admin/users/{{_id}}">
+                <td>{{name}}</td>
+                <td>{{email}}</td>
+                <td>{{role}}</td>
+                <td>
+                    <form action="/admin/update-role" method="post" class="manage-user-form">
+                        <input type="hidden" name="id" value="{{_id}}" />
+                        <select name="role">
+                            <option value="admin" {{#if (eq role 'admin')}}selected{{/if}}>Admin</option>
+                            <option value="user" {{#if (eq role 'user')}}selected{{/if}}>User</option>
+                        </select>
+                        <input type="submit" value="Update">
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <br>
+    <a href="/user/profile">PROFILE</a>
+</body>
+
+</html>
