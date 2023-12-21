@@ -17,11 +17,10 @@
     <div class="col s12 m4">
         <div class="card center-align"> <!-- Card for displaying event owner details -->
             <div class="card-content">
-                <span class="card-title">{{event.user.displayName}}</span> <!-- Display event owner's display name -->
-                {{displayImage event.user.image event.user.displayName}} <!-- Display event owner's image -->
+                <img class="img-fluid equal-size" src="/images/hult-graduation2-1440x810.jpg">
             </div>
             <div class="card-action">
-                <a href="/events/user/{{event.user._id}}">Read More {{event.user.firstName}}</a> <!-- Link to more events from the same user -->
+                <a href="/events">Read More</a> <!-- Link to more events from the same user -->
             </div>
         </div>
     </div>

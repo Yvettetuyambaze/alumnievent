@@ -1,6 +1,8 @@
-module.exports={
+// Exporting an object that defines roles in the application
+
+module.exports = {
   roles: {
-    admin: 'ADMIN',
-    user: 'USER',
+    admin: 'admin', // Role for administrators
+    user: 'user',   // Role for regular users
   }
-}
+};

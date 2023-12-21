@@ -35,10 +35,11 @@ module.exports = {
     res.redirect('/dashboard');      
   },
   ensureAdmin: function(req, res, next) {
-    if (req.user.role === 'ADMIN') {
+    if (req.user.role === 'admin') {
       next();
     } else {
-      res.redirect("/profile");
+      res.status(403).send("You need to be an admin to access this resource");
     }
   }
 };
+

@@ -9,13 +9,16 @@ const formatDate = (date, format) => {
 
 // Truncate the input string to a specified length, adding ellipses if necessary
 const truncate = (str, len) => {
-  if (str.length > len && str.length > 0) {
-    let new_str = str + ' ';
-    new_str = str.substr(0, len);
-    new_str = str.substr(0, new_str.lastIndexOf(' '));
-    new_str = new_str.length > 0 ? new_str : str.substr(0, len);
-    return new_str + '...';
+  if (!str || str.length === 0) {
+    return ''; // Handle the case where str is undefined or an empty string
   }
+
+  if (str.length > len) {
+    let truncatedStr = str.substring(0, len).trim(); // Truncate and remove trailing spaces
+    truncatedStr = truncatedStr.substr(0, truncatedStr.lastIndexOf(' '));
+    return truncatedStr.length > 0 ? truncatedStr + '...' : str.substr(0, len) + '...';
+  }
+
   return str;
 };
 
@@ -38,10 +41,6 @@ const select = (selected, options) => {
     );
 };
 
-const displayImage = (src, alt) => {
-  console.log('Display Image Helper Called:', src, alt);
-  return `<img src="${src}" alt="${alt}">`;
-};
 
 // Helper for displaying an edit icon
 const editIcon = (eventUser, loggedUser, eventId, floating = true) => {
@@ -61,6 +60,5 @@ module.exports = {
   truncate,
   stripTags,
   select,
-  displayImage,
   editIcon,
 };

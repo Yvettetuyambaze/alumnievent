@@ -9,8 +9,8 @@ const methodOverride = require('method-override'); // Module for using HTTP verb
 const passport = require('passport'); // Module for user authentication
 const session = require('express-session'); // Module for managing user sessions
 const MongoStore = require('connect-mongo'); // Module for storing session data in MongoDB
-const connectDB = require('./config/db'); // Module for connecting to MongoDB
-const flash = require('connect-flash');
+const connectDB = require('./config/database'); // Module for connecting to MongoDB
+const flash = require('connect-flash'); // Module for flash messages
 
 // Load config
 dotenv.config({ path: './config/config.env' }); // Load environment variables
@@ -48,7 +48,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Handlebars Helpers
 // Import necessary helpers from the handlebars file
-const { formatDate, stripTags, truncate, editIcon, select, displayImage } = require('./helpers/hbs');
+const { formatDate, stripTags, truncate, editIcon, select, displayImage } = require('./helpers/help');
 
 // Handlebars configuration
 app.engine('.hbs', exphbs({
@@ -66,7 +66,6 @@ app.engine('.hbs', exphbs({
       return a === b;
     },
   },
-  
   defaultLayout: 'mainLayouts',
   extname: '.hbs',
   partialsDir: [path.join(__dirname, 'views/partials')],
@@ -76,14 +75,13 @@ app.set('view engine', '.hbs'); // Set the view engine for rendering templates
 // Sessions
 const mongoStore = MongoStore.create({
   mongoUrl: process.env.MONGO_URI, // Specify the MongoDB connection URI
- 
 });
 
 app.use(
   session({
     secret: 'keyboard cat', // Secret used to sign the session ID cookie
-    resave: true, //  save the session for every request
-    saveUninitialized: true, //  create a session until a user is logged in
+    resave: true, // Save the session for every request
+    saveUninitialized: true, // Create a session until a user is logged in
     store: mongoStore, // Use MongoDB to store sessions
   })
 );
@@ -117,8 +115,6 @@ app.use('/events', require('./routes/eventRoutes')); // Event-related routes
 app.use('/contact', require('./routes/contactRoutes')); // Added the contactRoutes file
 app.use('/users', require('./routes/usersRoutes')); // Added the usersRoutes file
 app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes file
-
-
 
 const PORT = process.env.PORT || 3000; // Define the port number
 

@@ -1,67 +1,75 @@
+<!-- Navigation Bar Start -->
+<nav class="blue darken-4 sticky-top">
+    <div class="nav-wrapper container fixed" style="width: 95%;">
 
-<nav class="blue darken-4 sticky-top" >
-  <div class="nav-wrapper container fixed" style="width: 95%; ">
+        <!-- Mobile Menu Trigger -->
+        <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
 
-    <a href="/" data-target="mobile-demo" class="sidenav-trigger"><i class="fas fa-bars"></i></a>
-    <i class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff;"></i>
-   <a href="/" class="brand-logo left hide-on-med-and-down" style="font-size: 17px; text-transform: uppercase;">Alumni Events</a>
-    <a href="/" class="brand-logo right hide-on-large-only">Alumni Events</a>
-    <ul id="nav-mobile" class="right hide-on-med-and-down">
-      {{#if user}}
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/opportunity">Opportunity Board</a></li>
-        <li><a href="/events">Public Events</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/events/add" class="btn btn-primary py-2  top-0 end-0 mt-2 me-2">Create Event</a></li>
-        <li><a href="/users/logout" class="btn btn-primary py-2  top-0 end-0 mt-2 me-2">Logout</a></li>
-       <!-- Add the profile icon here with styling -->
-<li>
-  <a href="/users/profile" class="btn-flat white" style="height: 50px; line-height: 50px; padding: 0 8px;">
-    <i class="fas fa-user" style="font-size: 24px; color: #000000;"></i>
-  </a>
-</li>
-      {{else}}
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/opportunity">Opportunity Board</a></li>
-        <li><a href="/events">Upcoming Events</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a class="btn btn-primary py-2  top-0 end-0 mt-2 me-2 " href="/login">Login/Signup</a></li>
-      {{/if}}
-    </ul>
-    <ul class="sidenav" id="mobile-demo">
-      {{#if user}}
-        <li><a href="/dashboard">Dashboard</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/opportunity">Opportunity Board</a></li>
-       <a class="dropdown-trigger" href="#" data-target="public-events-dropdown">
-        Public Events <i class="material-icons right">arrow_drop_down</i>
-      </a>
+        <!-- Logo with Styling -->
+        <a href="/" class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff;"></a>
 
-      <!-- Dropdown Structure -->
-      <ul id="public-events-dropdown" class="dropdown-content">
-        <li><a href="/events?category=professional-development">Professional Development</a></li>
-        <li><a href="/events?category=networking">Networking</a></li>
-        <li><a href="/events?category=campus-events">Campus Events</a></li>
-      </ul>
-        <li><a href="/events/add">Create Event</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a href="/users/logout">Logout</a></li>
-       <!-- Add the profile icon here with styling -->
-<li>
-  <a href="/users/profile" class="btn-flat white" style="height: 64px; line-height: 64px; padding: 0 8px;">
-    <i class="fas fa-user" style="font-size: 24px; color: #fff;"></i>
-  </a>
-</li>
-      {{else}}
-        <li><a href="/">Home</a></li>
-        <li><a href="/about">About Us</a></li>
-        <li><a href="/opportunity">Opportunity Board</a></li>
-        <li><a href="/events">Upcoming Events</a></li>
-        <li><a href="/contact">Contact Us</a></li>
-        <li><a class="btn btn-primary py-2  top-0 end-0 mt-2 me-2" href="/login">Login/Signup</a></li>
-      {{/if}}
-    </ul>
-  </div>
+        <!-- Brand Logo (Large Screen) -->
+        <a href="/" class="brand-logo left hide-on-med-and-down" style="font-size: 17px; text-transform: uppercase;">Alumni Events</a>
+
+        <!-- Brand Logo (Small Screen) -->
+        <a href="/" class="brand-logo right hide-on-large-only">Alumni Events</a>
+
+        <!-- Navigation Links (Large Screen) -->
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            {{#if user}}
+                <!-- User is Logged In -->
+                <li><a href="/">Home</a></li>
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/opportunity">Opportunities</a></li>
+                <li><a href="/events">Public Events</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/events/add">Create Event</a></li>
+                <li><a href="/users/logout" class="btn btn-success py-2 top-0 end-0 mt-2 me-2">Logout</a></li>
+                <!-- Profile Icon with Styling -->
+                <li>
+                    <a href="/users/profile" class="btn-flat white" style="height: 50px; line-height: 50px; padding: 0 8px;">
+                        <i class="fas fa-user" style="font-size: 24px; color: #000000;"></i>
+                    </a>
+                </li>
+            {{else}}
+                <!-- User is Not Logged In -->
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/opportunity">Opportunity Board</a></li>
+                <li><a href="/events">Upcoming Events</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a class="btn btn-success py-2 top-0 end-0 mt-2 me-2" href="/login">Login/Signup</a></li>
+            {{/if}}
+        </ul>
+
+        <!-- Navigation Links (Small Screen) -->
+        <ul class="sidenav" id="mobile-demo">
+            {{#if user}}
+                <!-- User is Logged In (Mobile) -->
+                <li><a href="/dashboard">Dashboard</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/opportunity">Opportunity Board</a></li>
+                <li><a href="/events">Public Events</a></li>
+                <li><a href="/events/add">Create Event</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a href="/users/logout">Logout</a></li>
+                <!-- Profile Icon with Styling (Mobile) -->
+                <li>
+                    <a href="/users/profile" class="btn-flat white" style="height: 64px; line-height: 64px; padding: 0 8px;">
+                        <i class="fas fa-user" style="font-size: 24px; color: #fff;"></i>
+                    </a>
+                </li>
+            {{else}}
+                <!-- User is Not Logged In (Mobile) -->
+                <li><a href="/">Home</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/opportunity">Opportunity Board</a></li>
+                <li><a href="/events">Upcoming Events</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+                <li><a class="btn btn-success py-2 top-0 end-0 mt-2 me-2" href="/login">Login/Signup</a></li>
+            {{/if}}
+        </ul>
+    </div>
 </nav>
+<!-- Navigation Bar End -->

@@ -1,17 +1,19 @@
 <!-- This form allows users to add an event -->
-<h3>Add Event</h3> <!-- Heading indicating the purpose of the form -->
+<h3>Add Event</h3>
+<!-- Heading indicating the purpose of the form -->
 <div class="row">
-    <form action="/events" method="POST" class="col s12" enctype="multipart">
+    <form action="/events" method="POST" class="col s12" onsubmit="return validateForm()">
+        <!-- Input field for the event title -->
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="title" name="title">
-                <label for="title">Title</label> <!-- Input field for the event title -->
+                <input type="text" id="title" name="title" required>
+                <label for="title">Title</label>
             </div>
         </div>
         <!-- Dropdown to select the event status -->
         <div class="row">
             <div class="input-field col s12">
-                <select id="status" name="status">
+                <select id="status" name="status" required>
                     <option value="public" selected>Public</option>
                     <option value="private">Private</option>
                 </select>
@@ -21,7 +23,7 @@
         <!-- Dropdown to select the event category -->
         <div class="row">
             <div class="input-field col s12">
-                <select id="category" name="category">
+                <select id="category" name="category" required>
                     <option value="professional development" selected>Professional Development</option>
                     <option value="networking">Networking</option>
                     <option value="campus events">Campus Events</option>
@@ -32,21 +34,21 @@
         <!-- Input field to specify the date of the event -->
         <div class="row">
             <div class="input-field col s12">
-                <input type="date" id="date" name="date">
+                <input type="date" id="date" name="date" required>
                 <label for="date">Date</label>
             </div>
         </div>
         <!-- Input field to specify the event location -->
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="location" name="location">
+                <input type="text" id="location" name="location" required>
                 <label for="location">Location</label>
             </div>
         </div>
         <!-- Input field to specify the event host -->
         <div class="row">
             <div class="input-field col s12">
-                <input type="text" id="host" name="host">
+                <input type="text" id="host" name="host" required>
                 <label for="host">Host</label>
             </div>
         </div>
@@ -54,32 +56,33 @@
         <div class="row">
             <div class="input-field col s12">
                 <h5>Tell us more about your event:</h5>
-                <textarea id="body" name="body" class="materialize-textarea"></textarea>
+                <textarea id="body" name="body" class="materialize-textarea" required></textarea>
             </div>
         </div>
         <!-- Input field to upload an image for the event -->
         <div class="file-field input-field">
             <div class="btn">
                 <span>Upload Image</span>
-                <input type="file" name="image">
+                <input type="file" name="image" accept="image/*" required>
             </div>
             <div class="file-path-wrapper">
                 <input class="file-path validate" type="text">
             </div>
         </div>
 
-        <!-- Buttons for form submission and cancellation -->
+        <!-- Buttons for form submission and cancellation with confirmation -->
         <div class="row">
             <div class="col s6">
                 <input type="submit" value="Save" class="btn blue">
             </div>
             <div class="col s6">
-                <a href="/dashboard" class="btn blue">Cancel</a>
+                <a href="/dashboard" class="btn blue" onclick="return confirmCancel()">Cancel</a>
             </div>
         </div>
     </form>
 </div>
 
+<!-- Include Materialize JavaScript library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
     // Initialize Materialize dropdown select
@@ -87,4 +90,18 @@
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
     });
+
+    // Custom validation function
+    function validateForm() {
+        if (conditionNotMet) {
+            alert("Validation failed. Please check your inputs.");
+            return false;
+        }
+        return true;
+    }
+
+    // Confirmation function for cancel
+    function confirmCancel() {
+        return confirm("Are you sure you want to cancel? Your changes will not be saved.");
+    }
 </script>

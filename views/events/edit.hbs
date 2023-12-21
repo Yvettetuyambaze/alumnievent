@@ -59,12 +59,12 @@
         <!-- Text area to edit the event description -->
         <div class="row">
             <div class="input-field col s12">
-                <h5>Tell Us Your event:</h5>
+                <h5>Tell Us Your Event:</h5>
                 <textarea id="body" name="body" class="materialize-textarea">{{event.body}}</textarea>
             </div>
         </div>
         <!-- Input field to edit the event image -->
-         <div class="file-field input-field">
+        <div class="file-field input-field">
             <div class="btn">
                 <span>Upload Image</span>
                 <input type="file" name="image">
@@ -79,12 +79,13 @@
                 <input type="submit" value="Save" class="btn blue">
             </div>
             <div class="col s6">
-                <a href="/dashboard" class="btn red">Cancel</a>
+                <a href="/dashboard" class="btn blue" onclick="return confirmCancel()">Cancel</a>
             </div>
         </div>
     </form>
 </div>
 
+<!-- Include Materialize JavaScript library -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
     // Initialize Materialize dropdown select
@@ -92,4 +93,9 @@
         var elems = document.querySelectorAll('select');
         var instances = M.FormSelect.init(elems);
     });
+    
+    // Confirmation function for cancel
+    function confirmCancel() {
+        return confirm("Are you sure you want to cancel? Your changes will not be saved.");
+    }
 </script>

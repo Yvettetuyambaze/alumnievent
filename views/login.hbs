@@ -1,38 +1,62 @@
+<!-- Navigation link to the home page -->
+<a href="/" class="btn btn-success py-md-2 px-md-5 me-3 ">Go to Home</a>
 
-<a href="/" class=" btn btn-primary py-md-2 px-md-5 me-3 ">Go to Home</a>
+<!-- Section with centered alignment for the logo and app name -->
+<div class="section text-center">
+  <!-- Alumni Events logo -->
+  <i class="fas fa-graduation-cap"
+    style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff; padding: 20px;"></i>
 
-<div class="section text-center"> <!-- Section with centered alignment -->
-    <i class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff; padding: 20px;"></i>
-    <a href="/" style="text-decoration: none; color: #000000; margin-left: 10px;"><h3>Alumni Events</h3></a>
+  <!-- App name and link -->
+  <a href="/" style="text-decoration: none; color: #000000; margin-left: 10px;">
+    <h3>Alumni Events</h3>
+  </a>
 </div>
 
-<div class="section text-center"> <!-- New section for the welcome message -->
-    <p class="lead">Welcome to Alumni Events! Connect and create memorable events with your community.</p>
-    <p>Easily organize reunions, seminars, and networking events with our platform.</p>
+<!-- New section for the welcome message -->
+<div class="section text-center">
+  <!-- Introduction and welcome message -->
+  <p class="lead">Welcome to Alumni Events! Connect and create memorable events with your community.</p>
+  <p>Easily organize reunions, seminars, and networking events with our platform.</p>
 </div>
 
+<!-- Horizontal divider -->
 <div class="divider"></div>
 
-<div class="row mt-5 justify-content-center"> <!-- Center the row -->
+<!-- Row with centered content -->
+<div class="row mt-5 justify-content-center">
+  <!-- Card section for account creation and login -->
   <div class="col-md-6">
     <div class="card card-body text-center">
+      <!-- Informational message -->
       <p>Create an account or login</p>
-      <a href="/users/register" class="btn btn-primary btn-block mb-2">
+
+      <!-- Register button -->
+      <a href="/users/register" class="btn btn-success btn-block mb-2">
         Register
       </a>
+
+      <!-- Login with Email button -->
       <a href="/users/loginwithemail" class="btn btn-secondary btn-block">Login with Email</a>
+
     </div>
+
   </div>
 </div>
 
-<div class="section text-center"> <!-- Section for the login button -->
-    <a href="/auth/google" class="btn btn-primary py-md-2 px-md-5 me-3">
-        <i class="fab fa-google left"></i> Sign Up With Google
-    </a>
+<!-- Section for the Sign Up With Google button -->
+<div class="section text-center">
+  <p>Or</p>
+  <a href="/auth/google" class="btn btn-success py-md-2 px-md-5 me-3">
+    <!-- Google icon on the left of the button -->
+    <i class="fab fa-google left"></i> Sign Up With Google
+  </a>
 </div>
 
-<div class="section text-center"> <!-- Section for the login button -->
-    <a href="/auth/google" class="btn btn-primary blue  py-md-2 px-md-5 me-3">
-        <i class="fab fa-google left"></i> Log In With Google
-    </a>
+<!-- Section for the Log In With Google button -->
+<div class="section text-center">
+  <a href="/auth/google" class="btn btn-success blue py-md-2 px-md-5 me-3">
+    <!-- Google icon on the left of the button -->
+    <i class="fab fa-google left"></i> Log In With Google
+  </a>
 </div>

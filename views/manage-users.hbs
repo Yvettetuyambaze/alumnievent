@@ -1,45 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- Page Title -->
+<h1>Manage Alumni Records</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Manage Users</title>
-</head>
+<!-- Row with top margin -->
+<div class="row mt-4">
+    <!-- Column with medium width -->
+    <div class="col-md-6">
+        <!-- Loop through each user to display details and provide role update form -->
+        {{#each users}}
+            <!-- User Details Section -->
+            <h4>Name: {{users.name}}</h4>
+            <p>Email: {{users.email}}</p>
+            <p>Role: {{users.role}}</p>
 
-<body>
-    <h1>Manage Alumni Records</h1>
-    <table>
-        <thead>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Update Role</th>
-        </thead>
+            <!-- Form for updating user role -->
+            <form action="/admin/update-role" method="post" class="form-inline">
+                <!-- Hidden input to store user ID -->
+                <input type="hidden" name="id" value="{{user._id}}" />
 
-        <tbody>
-            {{#each users}}
-            <tr id="/admin/users/{{_id}}">
-                <td>{{name}}</td>
-                <td>{{email}}</td>
-                <td>{{role}}</td>
-                <td>
-                    <form action="/admin/update-role" method="post" class="manage-user-form">
-                        <input type="hidden" name="id" value="{{_id}}" />
-                        <select name="role">
-                            <option value="admin" {{#if (eq role 'admin')}}selected{{/if}}>Admin</option>
-                            <option value="user" {{#if (eq role 'user')}}selected{{/if}}>User</option>
-                        </select>
-                        <input type="submit" value="Update">
-                    </form>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    <br>
-    <a href="/user/profile">PROFILE</a>
-</body>
+                <!-- Form group for role selection -->
+                <div class="form-group mr-2">
+                    <label for="role">Update Role:</label>
+                    <!-- Dropdown for selecting a new role -->
+                    <select name="role" id="role" class="form-control">
+                        <!-- Admin role option -->
+                        <option value="admin" {{#if (eq role 'admin')}}selected{{/if}}>Admin</option>
+                        <!-- Alumni role option -->
+                        <option value="user" {{#if (eq role 'alumni')}}selected{{/if}}>Alumni</option>
+                    </select>
+                </div>
 
-</html>
+                <!-- Button to submit role update -->
+                <button type="submit" class="btn btn-success">Update</button>
+            </form>
+        {{/each}}
+    </div>
+</div>

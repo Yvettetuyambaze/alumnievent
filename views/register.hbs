@@ -1,10 +1,18 @@
+<!-- Navigation Link to Home -->
 <a href="/" class="btn">Go to Home</a>
+
+<!-- Registration Form Section -->
 <div class="row mt-5">
+  <!-- Column with medium width, centered with m-auto -->
   <div class="col-md-6 m-auto">
+    <!-- Card for the Registration Form -->
     <div class="card card-body">
+      <!-- Heading for the Registration Section -->
       <h1 class="text-center mb-3">
         <i class="fas fa-user-plus"></i> Register
       </h1>
+
+      <!-- Display Warning Alerts for Errors -->
       {{#if errors}}
         {{#each errors}}
           <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -16,6 +24,7 @@
         {{/each}}
       {{/if}}
 
+      <!-- Display Success Alert for Successful Registration -->
       {{#if success_msg}}
         <div class="alert alert-success alert-dismissible fade show" role="alert">
           {{success_msg}}
@@ -25,6 +34,7 @@
         </div>
       {{/if}}
 
+      <!-- Display Danger Alerts for Error Messages -->
       {{#if error_msg}}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           {{error_msg}}
@@ -33,7 +43,8 @@
           </button>
         </div>
       {{/if}}
-
+      
+      <!-- Display Danger Alerts for General Errors -->
       {{#if error}}
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
           {{error}}
@@ -43,18 +54,35 @@
         </div>
       {{/if}}
 
+      <!-- Registration Form -->
       <form action="/users/register" method="POST">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            class="form-control"
-            placeholder="Enter Name"
-           
-          />
+        <!-- Row for First Name and Last Name -->
+        <div class="row">
+          <!-- Form group for First Name -->
+          <div class="form-group col-md-6">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              placeholder="Enter First Name"
+            />
+          </div>
+          <!-- Form group for Last Name -->
+          <div class="form-group col-md-6">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              placeholder="Enter Last Name"
+            />
+          </div>
         </div>
+
+        <!-- Form group for Email -->
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -64,9 +92,10 @@
             class="form-control"
             placeholder="Enter Email"
             value="{{#if email}}{{email}}{{/if}}"
-          
           />
         </div>
+
+        <!-- Form group for Password -->
         <div class="form-group">
           <label for="password">Password</label>
           <input
@@ -75,10 +104,10 @@
             name="password"
             class="form-control"
             placeholder="Create Password"
-            
-        
           />
         </div>
+
+        <!-- Form group for Confirm Password -->
         <div class="form-group">
           <label for="password2">Confirm Password</label>
           <input
@@ -87,20 +116,27 @@
             name="password2"
             class="form-control"
             placeholder="Confirm Password"
-            
           />
         </div>
+
+        <!-- Form group for Role Selection -->
         <div class="form-group">
           <label for="role">Role</label>
           <select id="role" name="role" class="form-control">
+            <!-- Default selection is "Student Alumni" -->
             <option value="user" selected>Student Alumni</option>
+            <!-- Option for "Alumni Manager" -->
             <option value="admin">Alumni Manager</option>
           </select>
         </div>
-        <button type="submit" class="btn btn-primary btn-blockbtn btn-primary py-md-2 px-md-5">
+
+        <!-- Submit Button for Registration -->
+        <button type="submit" class="btn btn-success btn-block py-md-2 px-md-5">
           Register
         </button>
       </form>
+
+      <!-- Link to Login Page for Already Registered Users -->
       <p class="lead mt-4 ">Have An Account? <a href="/users/loginwithemail">Login</a></p>
     </div>
   </div>

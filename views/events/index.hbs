@@ -16,26 +16,52 @@
     </li>   
 </ul>
 
+<!-- Add a modal for displaying messages -->
+<div id="message-modal" class="modal">
+    <div class="modal-content">
+        <h4>Permission Denied</h4>
+        <p>Only admins are allowed to edit or delete events.</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="modal-close waves-effect waves-green btn-flat">Go Back</a>
+    </div>
+</div>
+
 <!-- Container for displaying upcoming events -->
 <div class="row">
     {{#each events}} <!-- Loop through each event -->
     <div class="col s12 m4">
         <div class="card">
             <div class="card-image">
-                <img src="{{image}}" alt="{{title}}"> <!-- Display event image -->
+                <img class="img-fluid equal-size" alt="{{title}}" src="/images/hult-graduation2-1440x810.jpg">
                 {{#if user}} <!-- Check if user is logged in -->
-                    <a href="/events/edit/{{_id}}" class="btn blue btn-edit">
-                        <i class="fas fa-edit"></i>
-                    </a>
+                    {{#if user.isAdmin}} <!-- Check if the logged-in user is an admin -->
+                        <a href="/events/edit/{{_id}}" class="btn blue btn-edit">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <!-- Form for deleting the event -->
+                        <form action="/events/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <!-- Delete button for the event -->
+                            <button type="submit" class="btn red btn-delete">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    {{else}}
+                        <!-- Display a message for non-admin users -->
+                        <a class="btn blue btn-edit modal-trigger" href="#message-modal">
+                            <i class="fas fa-edit"></i>
+                        </a>
 
-                    <!-- Form for deleting the event -->
-                    <form action="/events/{{_id}}" method="POST" id="delete-form">
-                        <input type="hidden" name="_method" value="DELETE">
-                        <!-- Delete button for the event -->
-                        <button type="submit" class="btn red btn-delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </form>
+                        <!-- Form for deleting the event -->
+                        <form action="/events/{{_id}}" method="POST" id="delete-form">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <!-- Delete button for the event -->
+                            <button type="submit" class="btn red btn-delete modal-trigger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    {{/if}}
                 {{/if}}
             </div>
             <div class="card-content center-align">
@@ -43,8 +69,7 @@
                 <p>{{stripTags (truncate body 150)}}</p> <!-- Display truncated body of the event -->
                 <br>
                 <div class="chip">
-                    <img src="{{user.image}}" alt="{{user.displayName}}"> <!-- Display user image -->
-                    <a href="/events/user/{{user._id}}">{{user.displayName}}</a> <!-- Link to user's profile -->
+                     <img class="img-fluid equal-size" src="/images/profilepic.jpg">
                 </div>
             </div>
             <div class="card-action center-align">
@@ -56,3 +81,11 @@
     <p>No Events to display</p> <!-- Display a message if there are no events to show -->
     {{/each}}
 </div>
+
+<!-- Script for initializing the modal -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('.modal');
+        var instances = M.Modal.init(elems);
+    });
+</script>

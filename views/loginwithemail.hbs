@@ -1,47 +1,64 @@
+<!-- Navigation link to the home page -->
 <a href="/" class="btn">Go to Home</a>
+
+<!-- Row with top margin -->
 <div class="row mt-5">
+  <!-- Column with medium width and centered content -->
   <div class="col-md-6 m-auto">
+    <!-- Card with a form for user login -->
     <div class="card card-body">
+      <!-- Title for the login section -->
       <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
-    {{#if errors}}
-  {{#each errors}}
-    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-      {{msg}}
-      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-  {{/each}}
-{{/if}}
 
-{{#if success_msg}}
-  <div class="alert alert-success alert-dismissible fade show" role="alert">
-    {{success_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      <!-- Display error messages, if any -->
+      {{#if errors}}
+        {{#each errors}}
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            {{msg}}
+            <!-- Close button for the alert -->
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {{/each}}
+      {{/if}}
 
-{{#if error_msg}}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{error_msg}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      <!-- Display success message, if any -->
+      {{#if success_msg}}
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          {{success_msg}}
+          <!-- Close button for the alert -->
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
 
-{{#if error}}
-  <div class="alert alert-danger alert-dismissible fade show" role="alert">
-    {{error}}
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-{{/if}}
+      <!-- Display error message, if any -->
+      {{#if error_msg}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{error_msg}}
+          <!-- Close button for the alert -->
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
 
+      <!-- Display generic error message, if any -->
+      {{#if error}}
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          {{error}}
+          <!-- Close button for the alert -->
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
+
+      <!-- Form for user login with email -->
       <form action="/users/loginwithemail" method="POST">
+        <!-- Email input field -->
         <div class="form-group">
           <label for="email">Email</label>
           <input
@@ -52,6 +69,8 @@
             placeholder="Enter Email"
           />
         </div>
+
+        <!-- Password input field -->
         <div class="form-group">
           <label for="password">Password</label>
           <input
@@ -62,8 +81,12 @@
             placeholder="Enter Password"
           />
         </div>
-        <button type="submit" class="btn btn-primary py-md-2 px-md-5">Login with Email</button>
+
+        <!-- Submit button for the login form -->
+        <button type="submit" class="btn btn-success py-md-2 px-md-5">Login with Email</button>
       </form>
+
+      <!-- Additional message with a link to the registration page -->
       <p class="lead mt-4">
         No Account? <a href="/users/register">Register</a>
       </p>
