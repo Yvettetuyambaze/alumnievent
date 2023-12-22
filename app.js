@@ -11,8 +11,7 @@ const session = require('express-session'); // Module for managing user sessions
 const MongoStore = require('connect-mongo'); // Module for storing session data in MongoDB
 const connectDB = require('./config/database'); // Module for connecting to MongoDB
 const flash = require('connect-flash'); // Module for flash messages
-const { middleware, visualizer } = require('express-routes-visualizer')
-const expressListEndpoints = require('express-list-endpoints');
+const expressListEndpoints = require('express-list-endpoints');//module for listing all routes
  
 
 
@@ -123,17 +122,8 @@ app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes fil
 
 
 //list all routes
-app.use('/routes', visualizer({ theme: 'dark-blue' }));
 
 console.log(expressListEndpoints(app));
-
-//visualize routes
-
-app.use(
-  '/routes',
-  middleware({ httpMethods: false }),
-  visualizer({ theme: 'dark-blue' })
-)
 
 
 const PORT = process.env.PORT || 3000; // Define the port number
