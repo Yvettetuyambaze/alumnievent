@@ -1,70 +1,83 @@
 <!-- Footer Start -->
 <div class="container-fluid bg-dark text-white-50 footer pt-5 mt-5  fadeIn" data-wow-delay="0.1s">
-    <div class="container py-5">
-        <div class="row g-5">
-            <!-- Company Section -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Company</h5>
-                <a href="/" class="fas fa-graduation-cap" style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff; padding: 20px;"></a>
-                <!-- Icon for the logo with styling -->
-                <h5 class="white-text">Alumni Events</h5> <!-- Title for the footer -->
-                <p class="grey-text text-lighten-4">Stay connected and never miss out on exciting alumni events.</p>
-                <!-- Description for the footer -->
-            </div>
+  <div class="container py-5">
+    <div class="row g-5">
+      <!-- Company Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white mb-4">Company</h5>
+        <a href="/" class="fas fa-graduation-cap"
+          style="font-size: 50px; border-radius: 50%; background-color: #4d8fcd; color: #ffffff; padding: 20px;"></a>
+        <!-- Icon for the logo with styling -->
+        <h5 class="white-text">Alumni Events</h5> <!-- Title for the footer -->
+        <p class="grey-text text-lighten-4">Stay connected and never miss out on exciting alumni events.</p>
+        <!-- Description for the footer -->
+      </div>
 
-            <!-- Quick Links Section -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Quick Links</h5>
-                {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
-                    <!-- Display these links only when the user is logged in -->
-                    <a class="btn btn-link text-white-50" href="/dashboard">Dashboard</a>
-                    <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
-                    <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
-                    <a class="btn btn-link text-white-50" href="/users/logout" class="btn red">Logout</a>
-                {{else}}
-                    <!-- Display these links only when the user is not logged in -->
-                    <a class="btn btn-link text-white-50" href="/">Home</a>
-                    <a class="btn btn-link text-white-50" href="/about">About Us</a>
-                    <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
-                    <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
-                    <a class="btn btn-link text-white-50" class="btn blue" href="/login">Login/Signup</a>
-                {{/if}}
-            </div>
+      <!-- Quick Links Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white mb-4">Quick Links</h5>
+        {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
+        <!-- Display these links only when the user is logged in -->
+        <a class="btn btn-link text-white-50" href="/dashboard">Dashboard</a>
+        <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
+        <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+        <li><a href="/users/logout" class="btn btn-success py-2 top-0 end-0 mt-2 me-2">Logout</a></li>
+        {{else}}
+        <!-- Display these links only when the user is not logged in -->
+        <a class="btn btn-link text-white-50" href="/">Home</a>
+        <a class="btn btn-link text-white-50" href="/about">About Us</a>
+        <a class="btn btn-link text-white-50" href="/events">Upcoming Events</a>
+        <a class="btn btn-link text-white-50" href="/contact">Contact Us</a>
+        <a class="btn btn-link text-white-50" class="btn blue" href="/login">Login/Signup</a>
+        {{/if}}
+      </div>
 
-            <!-- Contact Section -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Contact</h5>
-                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Mauritius, ALC Campus</p>
-                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+23055667712</p>
-                <p class="mb-2"><i class="fa fa-envelope me-3"></i>alumnievent@gmail.com</p>
-                <div class="d-flex pt-2">
-                    <a class="btn btn-outline-light btn-social" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.facebook.com"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
-                    <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-
-            <!-- Join Us Section -->
-            <div class="col-lg-3 col-md-6">
-                <h5 class="text-white mb-4">Join Us</h5>
-                <p>Log in or Sign up before joining us</p>
-                <div class="position-relative mx-auto" style="max-width: 400px;">
-                    <button type="button" class="btn btn-success py-2  top-0 end-0 mt-2 me-2" href="/login">Login/Signup</button>
-                </div>
-            </div>
+      <!-- Contact Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white mb-4">Contact</h5>
+        <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Mauritius, ALC Campus</p>
+        <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+23055667712</p>
+        <p class="mb-2"><i class="fa fa-envelope me-3"></i>alumnievent@gmail.com</p>
+        <div class="d-flex pt-2">
+          <a class="btn btn-outline-light btn-social" href="https://www.twitter.com"><i class="fab fa-twitter"></i></a>
+          <a class="btn btn-outline-light btn-social" href="https://www.facebook.com"><i
+              class="fab fa-facebook-f"></i></a>
+          <a class="btn btn-outline-light btn-social" href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+          <a class="btn btn-outline-light btn-social" href="https://www.linkedin.com"><i
+              class="fab fa-linkedin-in"></i></a>
         </div>
-    </div>
-
-    <div class="container">
-        <div class="copyright">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom" href="#">Alumni Events</a>, All Right Reserved.
-                    Designed By <a class="border-bottom" href="">Code By Yvette Tuyambaze</a>
-                </div>
-            </div>
+      </div>
+      {{#if user}} <!-- Conditional statement for displaying links based on user login status -->
+      <!-- Join Us Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white mb-4">Register and Participate in Organised events</h5>
+        <p>Create event or Register</p>
+        <div class="position-relative mx-auto" style="max-width: 400px;">
+          <button type="button" class="btn btn-success py-2  top-0 end-0 mt-2 me-2" href="/events">View Events</button>
         </div>
+      </div>
+       {{else}}
+      <!-- Join Us Section -->
+      <div class="col-lg-3 col-md-6">
+        <h5 class="text-white mb-4">Join Us</h5>
+        <p>Log in or Sign up before joining us</p>
+        <div class="position-relative mx-auto" style="max-width: 400px;">
+          <button type="button" class="btn btn-success py-2  top-0 end-0 mt-2 me-2" href="/login">Login/Signup</button>
+        </div>
+      </div>
+      {{/if}}
     </div>
+  </div>
+
+  <div class="container">
+    <div class="copyright">
+      <div class="row">
+        <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
+          &copy; <a class="border-bottom" href="#">Alumni Events</a>, All Right Reserved.
+          Designed By <a class="border-bottom" href="">Code By Yvette Tuyambaze</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- Footer End -->

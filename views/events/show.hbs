@@ -1,27 +1,62 @@
-<div class="row"> <!-- Row container for the event details -->
+<style>
+    #successMessage {
+        display: none;
+        background-color: #4CAF50; /* Green background */
+        color: white; /* White text color */
+        padding: 20px; /* Padding inside the message */
+        margin-top: 20px; /* Add some space at the top */
+        border-radius: 5px; /* Rounded corners */
+        text-align: center; /* Center-align text */
+    }
+
+    #successMessage p {
+        margin: 0; /* Remove default margin for paragraphs */
+    }
+</style>
+
+
+<div class="row">
     <div class="col s12 m8">
-        <h3>{{event.title}} <!-- Display event title -->
-            <small>{{{editIcon event.user user event._id false}}}</small> <!-- Display edit icon for the event owner -->
+        <h3>{{event.title}}
+            <small>{{{editIcon event.user user event._id false}}}</small>
         </h3>
-        <div class="card event"> <!-- Card for displaying event details -->
+        <div class="card event">
             <div class="card-content">
-                <span class="card-title">{{formatDate event.createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span> <!-- Display formatted creation date of the event -->
-                <p><strong>Category:</strong> {{event.category}}</p> <!-- Display event category -->
-                <p><strong>Date:</strong> {{formatDate event.date 'MMMM Do YYYY'}}</p> <!-- Display formatted event date -->
-                <p><strong>Location:</strong> {{event.location}}</p> <!-- Display event location -->
-                <p><strong>Host:</strong> {{event.host}}</p> <!-- Display event host -->
-                <p>{{{event.body}}}</p> <!-- Display event description -->
+                <span class="card-title">{{formatDate event.createdAt 'MMMM Do YYYY, h:mm:ss a'}}</span>
+                <p><strong>Category:</strong> {{event.category}}</p>
+                <p><strong>Date:</strong> {{formatDate event.date 'MMMM Do YYYY'}}</p>
+                <p><strong>Location:</strong> {{event.location}}</p>
+                <p><strong>Host:</strong> {{event.host}}</p>
+                <p>{{{event.body}}}</p>
             </div>
         </div>
     </div>
     <div class="col s12 m4">
-        <div class="card center-align"> <!-- Card for displaying event owner details -->
+        <div class="card center-align">
             <div class="card-content">
                 <img class="img-fluid equal-size" src="/images/hult-graduation2-1440x810.jpg">
             </div>
             <div class="card-action">
-                <a href="/events">Read More</a> <!-- Link to more events from the same user -->
+                <a href="/events">Go back</a>
+                <a href="#" id="registerButton" class="waves-effect waves-light btn">Register</a>
             </div>
         </div>
     </div>
 </div>
+
+<div id="successMessage">
+    <p>You have successfully registered for the event. More details will be sent to your email. Thank you! We can't wait to see you.</p>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const registerButton = document.getElementById('registerButton');
+        const successMessage = document.getElementById('successMessage');
+
+        registerButton.addEventListener('click', function () {
+            // You can add additional logic here for event registration
+            // For now, let's just display the success message
+            successMessage.style.display = 'block';
+        });
+    });
+</script>

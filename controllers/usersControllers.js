@@ -101,11 +101,13 @@ const postLoginWithEmail = (req, res, next) => {
 };
 
 // Controller for handling user logout
+// Controller for handling user logout
 const logout = (req, res) => {
-  req.logout();
-  req.flash("success_msg", "You are logged out");
-  res.redirect("/users/loginwithemail");
-};
+    req.logout(() => {
+      req.flash("success_msg", "You are logged out");
+      res.redirect("/users/loginwithemail");
+    });
+  };
 
 // Controller for rendering user profile
 const getProfile = async (req, res, next) => {
