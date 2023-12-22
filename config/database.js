@@ -15,7 +15,7 @@ const connectDB = async () => {
     const conn = await mongoose.connect(process.env.MONGO_URI);
 
     // Logging a success message along with the host of the connected MongoDB database
-    console.log(`MongoDB Connected Successfully: ${conn.connection.host}`)
+    console.log(`MongoDB Connected Successfully...`)
   } catch (err) {
     // Logging the error if the connection to the database fails
     console.error(err)
