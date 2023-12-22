@@ -11,6 +11,10 @@ const session = require('express-session'); // Module for managing user sessions
 const MongoStore = require('connect-mongo'); // Module for storing session data in MongoDB
 const connectDB = require('./config/database'); // Module for connecting to MongoDB
 const flash = require('connect-flash'); // Module for flash messages
+const { middleware, visualizer } = require('express-routes-visualizer')
+const expressListEndpoints = require('express-list-endpoints');
+ 
+
 
 // Load config
 dotenv.config({ path: './config/config.env' }); // Load environment variables
@@ -21,6 +25,7 @@ require('./config/passport')(passport); // Initialize passport with the passport
 connectDB(); // Connect to the MongoDB database
 
 const app = express(); // Create an express application
+
 
 // Serve static files from the "public" directory
 app.use(express.static('images'));
@@ -115,6 +120,21 @@ app.use('/events', require('./routes/eventRoutes')); // Event-related routes
 app.use('/contact', require('./routes/contactRoutes')); // Added the contactRoutes file
 app.use('/users', require('./routes/usersRoutes')); // Added the usersRoutes file
 app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes file
+
+
+//list all routes
+app.use('/routes', visualizer({ theme: 'dark-blue' }));
+
+console.log(expressListEndpoints(app));
+
+//visualize routes
+
+app.use(
+  '/routes',
+  middleware({ httpMethods: false }),
+  visualizer({ theme: 'dark-blue' })
+)
+
 
 const PORT = process.env.PORT || 3000; // Define the port number
 

@@ -7,9 +7,9 @@ const adminControllers = require("../controllers/adminControllers");
 router.get("/users", ensureAdmin, adminControllers.getUsers);
 
 // Route to view user profile (GET /admin/user/:id)
-router.get("/user/:id", adminControllers.getUserProfile);
+router.get("/user/:id",ensureAdmin, adminControllers.getUserProfile);
 
 // Route to update user role (POST /admin/update-role)
-router.post("/update-role", adminControllers.updateUserRole);
+router.post("/update-role",ensureAdmin, adminControllers.updateUserRole);
 
 module.exports = router;
