@@ -11,10 +11,7 @@ const session = require('express-session'); // Module for managing user sessions
 const MongoStore = require('connect-mongo'); // Module for storing session data in MongoDB
 const connectDB = require('./config/database'); // Module for connecting to MongoDB
 const flash = require('connect-flash'); // Module for flash messages
-const expressListEndpoints = require('express-list-endpoints');//module for listing all routes
  
-
-
 // Load config
 dotenv.config({ path: './config/config.env' }); // Load environment variables
 
@@ -119,12 +116,6 @@ app.use('/events', require('./routes/eventRoutes')); // Event-related routes
 app.use('/contact', require('./routes/contactRoutes')); // Added the contactRoutes file
 app.use('/users', require('./routes/usersRoutes')); // Added the usersRoutes file
 app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes file
-
-
-//list all routes
-
-console.log(expressListEndpoints(app));
-
 
 const PORT = process.env.PORT || 3000; // Define the port number
 
