@@ -1,5 +1,5 @@
 # Ignore the node_modules directory
-node_modules
+#node_modules
 
 # Ignore the config.env file
-config/config.env
+#config/config.env
