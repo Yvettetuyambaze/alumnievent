@@ -4,7 +4,9 @@
   "description": "App for creating public and private Events",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "cross-env NODE_ENV=production node app",
+    "dev": "cross-env NODE_ENV=development nodemon app",
+    "postinstall": "node ./scripts/post-install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yvette Tuyambaze",
@@ -24,6 +26,7 @@
     "fs-extra": "^9.0.1",
     "method-override": "^3.0.0",
     "moment": "^2.29.4",
+    "mongodb": "^6.3.0",
     "mongoose": "^8.0.3",
     "morgan": "^1.10.0",
     "nodemon": "^3.0.2",
