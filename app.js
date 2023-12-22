@@ -51,7 +51,7 @@ if (process.env.NODE_ENV === 'development') {
 const { formatDate, stripTags, truncate, editIcon, select, displayImage } = require('./helpers/help');
 
 // Handlebars configuration
-app.engine('.hbs', exphbs({
+app.engine('.hbs', exphbs.engine({
   helpers: {
     formatDate,
     stripTags,
