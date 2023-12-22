@@ -117,6 +117,7 @@ app.use('/contact', require('./routes/contactRoutes')); // Added the contactRout
 app.use('/users', require('./routes/usersRoutes')); // Added the usersRoutes file
 app.use('/admin', require('./routes/adminRoutes')); // Added the adminRoutes file
 
+
 const PORT = process.env.PORT || 3000; // Define the port number
 
 // Start the server
@@ -124,3 +125,4 @@ app.listen(
   PORT,
   console.log(`The Server is running on port ${PORT}...`) // Log server start information
 );
+
