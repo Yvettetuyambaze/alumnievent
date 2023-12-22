@@ -36,6 +36,12 @@ const UserSchema = new mongoose.Schema({
         enum: ['user', 'admin'],
         default: 'user',
       },
+    bio: {
+        type: String,
+      },  
+    phone: {    
+        type: String,
+      },
     
     createdAt: {
         type: Date,
